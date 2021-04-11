@@ -1,0 +1,19 @@
+name: chitin-demo
+hw_version: 0.0.1
+sw_version: 0.0.1
+processor: 18F57Q43
+dev_processor: 18F57Q43
+release_processors:
+- 18F57Q43
+programmer: Pickit4
+src_dir: src
+build_dir: build
+obj_dir: obj
+defines:
+- DEVELOPMENT
+- SHELL_ENABLED
+- SHELL_HISTORY_ENABLED
+- USB_ENABLED
+- LOGGING_ENABLED
+linker_flags:
+- -Pshell_cmds
