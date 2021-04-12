@@ -17,36 +17,21 @@
 // none
 
 // GPIO write functions
-// none
+extern void set_GREEN_LED_PIN(bool value);
+extern void set_RGB_1_LED_PIN(bool value);
+extern void set_RGB_2_LED_PIN(bool value);
+extern void set_RGB_3_LED_PIN(bool value);
+extern void set_YELLOW_LED_PIN(bool value);
+extern void set_RED_LED_PIN(bool value);
 
 // GPIO direction functions
 // none
 
 // PPS Pin initialization macros
-#define PPS_DEBUG_TX_PIN PPS_OUTPUT(B, 6)
-#define PPS_DEBUG_RX_PIN PPS_INPUT(B, 7)
+#define PPS_DEBUG_RX_PIN PPS_INPUT(B, 6)
+#define PPS_DEBUG_TX_PIN PPS_OUTPUT(B, 7)
 #define PPS_USB_TX_PIN PPS_OUTPUT(F, 6)
 #define PPS_USB_RX_PIN PPS_INPUT(F, 7)
-#ifdef DEVELOPMENT
-#define PPS_DEBUG_TX_PIN PPS_OUTPUT(B, 6)
-#else
-#define PPS_DEBUG_TX_PIN PPS_OUTPUT(B, 6)
-#endif
-#ifdef DEVELOPMENT
-#define PPS_DEBUG_RX_PIN PPS_INPUT(B, 7)
-#else
-#define PPS_DEBUG_RX_PIN PPS_INPUT(B, 7)
-#endif
-#ifdef DEVELOPMENT
-#define PPS_USB_TX_PIN PPS_OUTPUT(F, 6)
-#else
-#define PPS_USB_TX_PIN PPS_OUTPUT(F, 6)
-#endif
-#ifdef DEVELOPMENT
-#define PPS_USB_RX_PIN PPS_INPUT(F, 7)
-#else
-#define PPS_USB_RX_PIN PPS_INPUT(F, 7)
-#endif
 
 // ADC Channel Select macros
 // none

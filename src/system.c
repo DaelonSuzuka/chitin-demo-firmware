@@ -1,11 +1,12 @@
 #include "system.h"
+#include "leds.h"
 #include "os/buttons.h"
+#include "os/judi/judi.h"
 #include "os/logging.h"
 #include "os/serial_port.h"
 #include "os/shell/shell.h"
 #include "os/stopwatch.h"
 #include "os/system_time.h"
-#include "os/judi/judi.h"
 #include "peripherals/device_information.h"
 #include "peripherals/interrupt.h"
 #include "peripherals/oscillator.h"
@@ -15,6 +16,7 @@
 #include "peripherals/timer.h"
 #include "peripherals/uart.h"
 #include "pins.h"
+#include "rgb.h"
 #include "usb/messages.h"
 
 /* ************************************************************************** */
@@ -97,6 +99,9 @@ static void application_init(void) {
 
     usb_port_init(&config);
     judi_init(respond);
+
+    leds_init();
+    rgb_init();
 }
 
 /* ************************************************************************** */

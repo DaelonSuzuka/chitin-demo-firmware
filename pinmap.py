@@ -13,6 +13,7 @@ class Pin:
     # shortcuts
     button = ['input', 'gpio', 'button']
     relay = ['output', 'gpio', 'tristate']
+    led = ['output', 'gpio']
     uart_tx = ['output', 'pps']
     uart_rx = ['input', 'pps']
     analog_in = ['input', 'analog']
@@ -36,22 +37,22 @@ common = {
     'B3': None,
     'B4': None,
     'B5': None,
-    'B6': ('DEBUG_TX_PIN', Pin.uart_tx),
-    'B7': ('DEBUG_RX_PIN', Pin.uart_rx),
+    'B6': ('DEBUG_RX_PIN', Pin.uart_rx),
+    'B7': ('DEBUG_TX_PIN', Pin.uart_tx),
 
     # port C
     'C0': None,
     'C1': None,
     'C2': None,
-    'C3': None,
-    'C4': None,
-    'C5': None,
-    'C6': None,
+    'C3': ('GREEN_LED_PIN', Pin.led),
+    'C4': ('RGB_1_LED_PIN', Pin.led),
+    'C5': ('RGB_2_LED_PIN', Pin.led),
+    'C6': ('RGB_3_LED_PIN', Pin.led),
     'C7': None,
 
     # port D
-    'D0': None,
-    'D1': None,
+    'D0': ('YELLOW_LED_PIN', Pin.led),
+    'D1': ('RED_LED_PIN', Pin.led),
     'D2': None,
     'D3': None,
     'D4': None,
@@ -81,11 +82,7 @@ common = {
 # Debug UART pins are not present in release mode
 
 
-development = {
-    **common,
-}
+development = {}
 
 
-release = {
-    **common,
-}
+release = {}

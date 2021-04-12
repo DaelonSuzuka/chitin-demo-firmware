@@ -14,7 +14,12 @@
 // none
 
 // GPIO write functions
-// none
+void set_GREEN_LED_PIN(bool value) { LATCbits.LATC3 = value; }
+void set_RGB_1_LED_PIN(bool value) { LATCbits.LATC4 = value; }
+void set_RGB_2_LED_PIN(bool value) { LATCbits.LATC5 = value; }
+void set_RGB_3_LED_PIN(bool value) { LATCbits.LATC6 = value; }
+void set_YELLOW_LED_PIN(bool value) { LATDbits.LATD0 = value; }
+void set_RED_LED_PIN(bool value) { LATDbits.LATD1 = value; }
 
 // GPIO direction functions
 // none
@@ -28,44 +33,34 @@
 ]]] */
 
 void pins_init(void) {
-    // DEBUG_TX_PIN
-    TRISBbits.TRISB6 = 0;
-
     // DEBUG_RX_PIN
-    TRISBbits.TRISB7 = 1;
+    TRISBbits.TRISB6 = 1;
+
+    // DEBUG_TX_PIN
+    TRISBbits.TRISB7 = 0;
+
+    // GREEN_LED_PIN
+    TRISCbits.TRISC3 = 0;
+
+    // RGB_1_LED_PIN
+    TRISCbits.TRISC4 = 0;
+
+    // RGB_2_LED_PIN
+    TRISCbits.TRISC5 = 0;
+
+    // RGB_3_LED_PIN
+    TRISCbits.TRISC6 = 0;
+
+    // YELLOW_LED_PIN
+    TRISDbits.TRISD0 = 0;
+
+    // RED_LED_PIN
+    TRISDbits.TRISD1 = 0;
 
     // USB_TX_PIN
     TRISFbits.TRISF6 = 0;
 
     // USB_RX_PIN
     TRISFbits.TRISF7 = 1;
-
-// DEBUG_TX_PIN
-#ifdef DEVELOPMENT
-    TRISBbits.TRISB6 = 0;
-#else
-    TRISBbits.TRISB6 = 0;
-#endif
-
-// DEBUG_RX_PIN
-#ifdef DEVELOPMENT
-    TRISBbits.TRISB7 = 1;
-#else
-    TRISBbits.TRISB7 = 1;
-#endif
-
-// USB_TX_PIN
-#ifdef DEVELOPMENT
-    TRISFbits.TRISF6 = 0;
-#else
-    TRISFbits.TRISF6 = 0;
-#endif
-
-// USB_RX_PIN
-#ifdef DEVELOPMENT
-    TRISFbits.TRISF7 = 1;
-#else
-    TRISFbits.TRISF7 = 1;
-#endif
 }
 // [[[end]]]
