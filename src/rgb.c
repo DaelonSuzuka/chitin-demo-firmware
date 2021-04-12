@@ -13,6 +13,7 @@ enum rgb_colors {
     rgb_cyan,
     rgb_yellow,
     rgb_magenta,
+    rgb_white,
     rgb_num_of_colors,
 };
 
@@ -66,6 +67,11 @@ void set_rgb_color(enum rgb_colors color) {
     case rgb_magenta:
         set_RGB_1_LED_PIN(1); // blue
         set_RGB_2_LED_PIN(0); // green
+        set_RGB_3_LED_PIN(1); // red
+        break;
+    case rgb_white:
+        set_RGB_1_LED_PIN(1); // blue
+        set_RGB_2_LED_PIN(1); // green
         set_RGB_3_LED_PIN(1); // red
         break;
     }

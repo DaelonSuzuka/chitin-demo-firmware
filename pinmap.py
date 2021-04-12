@@ -53,8 +53,8 @@ common = {
     # port D
     'D0': ('YELLOW_LED_PIN', Pin.led),
     'D1': ('RED_LED_PIN', Pin.led),
-    'D2': None,
-    'D3': None,
+    'D2': ('LCD_TX_PIN', Pin.led),
+    'D3': ('LCD_RX_PIN', Pin.uart_rx),
     'D4': None,
     'D5': None,
     'D6': None,

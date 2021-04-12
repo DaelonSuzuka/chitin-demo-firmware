@@ -23,6 +23,7 @@ extern void set_RGB_2_LED_PIN(bool value);
 extern void set_RGB_3_LED_PIN(bool value);
 extern void set_YELLOW_LED_PIN(bool value);
 extern void set_RED_LED_PIN(bool value);
+extern void set_LCD_TX_PIN(bool value);
 
 // GPIO direction functions
 // none
@@ -30,6 +31,7 @@ extern void set_RED_LED_PIN(bool value);
 // PPS Pin initialization macros
 #define PPS_DEBUG_RX_PIN PPS_INPUT(B, 6)
 #define PPS_DEBUG_TX_PIN PPS_OUTPUT(B, 7)
+#define PPS_LCD_RX_PIN PPS_INPUT(D, 3)
 #define PPS_USB_TX_PIN PPS_OUTPUT(F, 6)
 #define PPS_USB_RX_PIN PPS_INPUT(F, 7)
 

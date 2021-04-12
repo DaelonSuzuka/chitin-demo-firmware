@@ -20,6 +20,7 @@ void set_RGB_2_LED_PIN(bool value) { LATCbits.LATC5 = value; }
 void set_RGB_3_LED_PIN(bool value) { LATCbits.LATC6 = value; }
 void set_YELLOW_LED_PIN(bool value) { LATDbits.LATD0 = value; }
 void set_RED_LED_PIN(bool value) { LATDbits.LATD1 = value; }
+void set_LCD_TX_PIN(bool value) { LATDbits.LATD2 = value; }
 
 // GPIO direction functions
 // none
@@ -56,6 +57,12 @@ void pins_init(void) {
 
     // RED_LED_PIN
     TRISDbits.TRISD1 = 0;
+
+    // LCD_TX_PIN
+    TRISDbits.TRISD2 = 0;
+
+    // LCD_RX_PIN
+    TRISDbits.TRISD3 = 1;
 
     // USB_TX_PIN
     TRISFbits.TRISF6 = 0;

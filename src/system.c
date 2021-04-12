@@ -1,4 +1,5 @@
 #include "system.h"
+#include "lcd.h"
 #include "leds.h"
 #include "os/buttons.h"
 #include "os/judi/judi.h"
@@ -13,6 +14,7 @@
 #include "peripherals/pic_header.h"
 #include "peripherals/ports.h"
 #include "peripherals/pps.h"
+#include "peripherals/reset.h"
 #include "peripherals/timer.h"
 #include "peripherals/uart.h"
 #include "pins.h"
@@ -90,7 +92,6 @@ static void OS_init(void) {
 
 static void application_init(void) {
     // init functions for your modules go here
-
     uart_config_t config = UART_get_config(1);
     config.baud = _1000000;
     config.txPin = PPS_USB_TX_PIN;
@@ -102,6 +103,7 @@ static void application_init(void) {
 
     leds_init();
     rgb_init();
+    lcd_init();
 }
 
 /* ************************************************************************** */
@@ -109,6 +111,8 @@ static void application_init(void) {
 void startup(void) {
     system_init();
     OS_init();
+
+    check_hardware_reset_flags();
 
     application_init();
 
