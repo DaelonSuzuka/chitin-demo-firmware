@@ -112,7 +112,7 @@ void startup(void) {
     system_init();
     OS_init();
 
-    check_hardware_reset_flags();
+    // check_hardware_reset_flags();
 
     application_init();
 
