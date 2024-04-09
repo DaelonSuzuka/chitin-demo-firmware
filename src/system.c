@@ -44,24 +44,24 @@ const char compileTime[] = __TIME__;
 
 /* ************************************************************************** */
 
-// // Set up the timer for the button isr
-// static void button_isr_init(void) {
-//     // Timer 6 configured using MPLABX MCC
-//     // Period is calculated to be exactly 5ms
-//     timer6_clock_source(TMR2_CLK_FOSC4);
-//     timer6_prescale(TMR_PRE_1_128);
-//     timer6_postscale(TMR_POST_1_10);
-//     timer6_period_set(0xF9);
-//     timer6_interrupt_enable();
-//     timer6_start();
-// }
+// Set up the timer for the button isr
+static void button_isr_init(void) {
+    // Timer 6 configured using MPLABX MCC
+    // Period is calculated to be exactly 5ms
+    timer6_clock_source(TMR2_CLK_FOSC4);
+    timer6_prescale(TMR_PRE_1_128);
+    timer6_postscale(TMR_POST_1_10);
+    timer6_period_set(0xF9);
+    timer6_interrupt_enable();
+    timer6_start();
+}
 
-// // call scan_buttons() every 5ms
-// void __interrupt(irq(TMR6), high_priority) button_ISR(void) {
-//     timer6_IF_clear();
+// call scan_buttons() every 5ms
+void __interrupt(irq(TMR6), high_priority) button_ISR(void) {
+    timer6_IF_clear();
 
-//     scan_buttons();
-// }
+    scan_buttons();
+}
 
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ static void OS_init(void) {
 
     shell_init();
 
-    // buttons_init(NUMBER_OF_BUTTONS, buttonFunctions);
-    // button_isr_init();
+    buttons_init(NUMBER_OF_BUTTONS, buttonFunctions);
+    button_isr_init();
 
     logging_init();
     system_time_init();
