@@ -15,3 +15,5 @@ log.0.lck
 
 # ignore python byproducts
 __pycache__
+
+.history
