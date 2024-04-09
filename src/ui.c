@@ -1,4 +1,5 @@
 #include "ui.h"
+#include "bargraph.h"
 #include "leds.h"
 #include "os/buttons.h"
 #include "os/judi/judi.h"
@@ -21,6 +22,8 @@ void ui_idle_block(void) {
 
     // rgb led
     attempt_rgb_update();
+
+    attempt_bargraph_update();
 
     shell_update(getch());
 

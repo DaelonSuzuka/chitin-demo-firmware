@@ -20,6 +20,7 @@ enum rgb_colors {
 enum rgb_modes {
     rgb_off,
     rgb_blink,
+    rgb_solid,
     rgb_fade,
 };
 
@@ -88,7 +89,7 @@ void attempt_rgb_blink(void) {
 
     static enum rgb_colors current_color = 0;
 
-    if (rgb_mode != rgb_off) {
+    if (rgb_mode == rgb_blink) {
         set_rgb_color(current_color);
         current_color++;
         if (current_color == rgb_num_of_colors) {
@@ -108,7 +109,7 @@ void attempt_rgb_fade(void) {
     }
     lastAttempt = get_current_time();
 
-    if (rgb_mode != rgb_off) {
+    if (rgb_mode == rgb_fade) {
         // println("fade...");
     }
 }
@@ -142,7 +143,8 @@ void sh_rgb(int argc, char **argv) {
     switch (argc) {
     case 1:
         println("usage: \trgb");
-        println("\trgb <mode>");
+        println("\trgb <off|blink|set>");
+        println("\trgb set <color>");
         return;
 
     case 2:
@@ -155,11 +157,37 @@ void sh_rgb(int argc, char **argv) {
         } else if (!strcmp(argv[1], "blink")) {
             rgb_mode = rgb_blink;
             return;
-        } else if (!strcmp(argv[1], "fade")) {
-            rgb_mode = rgb_fade;
-            return;
+            // } else if (!strcmp(argv[1], "fade")) {
+            //     rgb_mode = rgb_fade;
+            //     return;
         } else {
             break;
+        }
+    case 3:
+        if (!strcmp(argv[1], "set")) {
+            rgb_mode = rgb_solid;
+            if (!strcmp(argv[2], "red")) {
+                set_rgb_color(rgb_red);
+                return;
+            } else if (!strcmp(argv[2], "green")) {
+                set_rgb_color(rgb_green);
+                return;
+            } else if (!strcmp(argv[2], "blue")) {
+                set_rgb_color(rgb_blue);
+                return;
+            } else if (!strcmp(argv[2], "cyan")) {
+                set_rgb_color(rgb_cyan);
+                return;
+            } else if (!strcmp(argv[2], "yellow")) {
+                set_rgb_color(rgb_yellow);
+                return;
+            } else if (!strcmp(argv[2], "magenta")) {
+                set_rgb_color(rgb_magenta);
+                return;
+            } else if (!strcmp(argv[2], "white")) {
+                set_rgb_color(rgb_white);
+                return;
+            }
         }
     }
     println("invalid arguments");

@@ -19,6 +19,8 @@
 #include "peripherals/uart.h"
 #include "pins.h"
 #include "rgb.h"
+#include "skipline.h"
+#include "bargraph.h"
 #include "usb/messages.h"
 
 /* ************************************************************************** */
@@ -105,6 +107,8 @@ static void application_init(void) {
     leds_init();
     rgb_init();
     lcd_init();
+    skipline_init();
+    bargraph_init();
 }
 
 /* ************************************************************************** */
