@@ -23,12 +23,12 @@ common = {
     # port A
     'A0': None,
     'A1': None,
-    'A2': None,
-    'A3': None,
+    'A2': ('ONE_BUTTON_PIN', Pin.button),
+    'A3': ('TWO_BUTTON_PIN', Pin.button),
     'A4': None,
-    'A5': None,
-    'A6': None,
-    'A7': None,
+    'A5': ('GREEN_LED_PIN', Pin.led),
+    'A6': ('YELLOW_LED_PIN', Pin.led),
+    'A7': ('RED_LED_PIN', Pin.led),
 
     # port B
     'B0': None,
@@ -44,24 +44,24 @@ common = {
     'C0': None,
     'C1': None,
     'C2': None,
-    'C3': ('GREEN_LED_PIN', Pin.led),
-    'C4': ('RGB_1_LED_PIN', Pin.led),
-    'C5': ('RGB_2_LED_PIN', Pin.led),
-    'C6': ('RGB_3_LED_PIN', Pin.led),
+    'C3': ('BARGRAPH_CLOCK', Pin.led),
+    'C4': ('BARGRAPH_MISO', Pin.led),
+    'C5': ('BARGRAPH_DATA', Pin.led),
+    'C6': None,
     'C7': None,
 
     # port D
-    'D0': ('YELLOW_LED_PIN', Pin.led),
-    'D1': ('RED_LED_PIN', Pin.led),
+    'D0': None,
+    'D1': None,
     'D2': ('LCD_TX_PIN', Pin.led),
     'D3': ('LCD_RX_PIN', Pin.uart_rx),
     'D4': None,
-    'D5': None,
-    'D6': None,
-    'D7': None,
+    'D5': ('RGB_1_LED_PIN', Pin.led),
+    'D6': ('RGB_2_LED_PIN', Pin.led),
+    'D7': ('RGB_3_LED_PIN', Pin.led),
 
     # port E
-    'E0': None,
+    'E0': ('BARGRAPH_STROBE', Pin.led),
     'E1': None,
     'E2': None,
     'E3': None,
@@ -76,10 +76,6 @@ common = {
     'F6': ('USB_TX_PIN', Pin.uart_tx),
     'F7': ('USB_RX_PIN', Pin.uart_rx),
 }
-
-
-# Frequency counter, C7, and C8 are on the VPP, ICSPCLK, and ICSPDAT pins and need to be moved
-# Debug UART pins are not present in release mode
 
 
 development = {}

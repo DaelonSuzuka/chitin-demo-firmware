@@ -11,19 +11,34 @@
 ]]] */
 
 // GPIO read functions
-// none
+extern bool read_ONE_BUTTON_PIN(void);
+extern bool read_TWO_BUTTON_PIN(void);
 
 // Button stuff
-// none
+#define NUMBER_OF_BUTTONS 2
+
+// array of pointers to button reading functions
+typedef bool (*button_function_t)(void);
+extern button_function_t buttonFunctions[NUMBER_OF_BUTTONS];
+
+// enum of button names
+enum {
+    ONE,
+    TWO,
+} button_names;
 
 // GPIO write functions
 extern void set_GREEN_LED_PIN(bool value);
+extern void set_YELLOW_LED_PIN(bool value);
+extern void set_RED_LED_PIN(bool value);
+extern void set_BARGRAPH_CLOCK(bool value);
+extern void set_BARGRAPH_MISO(bool value);
+extern void set_BARGRAPH_DATA(bool value);
+extern void set_LCD_TX_PIN(bool value);
 extern void set_RGB_1_LED_PIN(bool value);
 extern void set_RGB_2_LED_PIN(bool value);
 extern void set_RGB_3_LED_PIN(bool value);
-extern void set_YELLOW_LED_PIN(bool value);
-extern void set_RED_LED_PIN(bool value);
-extern void set_LCD_TX_PIN(bool value);
+extern void set_BARGRAPH_STROBE(bool value);
 
 // GPIO direction functions
 // none
