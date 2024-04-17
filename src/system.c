@@ -1,4 +1,5 @@
 #include "system.h"
+#include "bargraph.h"
 #include "lcd.h"
 #include "leds.h"
 #include "os/buttons.h"
@@ -6,6 +7,7 @@
 #include "os/logging.h"
 #include "os/serial_port.h"
 #include "os/shell/shell.h"
+#include "os/shell/shell_command_utils.h"
 #include "os/stopwatch.h"
 #include "os/system_time.h"
 #include "peripherals/device_information.h"
@@ -20,7 +22,6 @@
 #include "pins.h"
 #include "rgb.h"
 #include "skipline.h"
-#include "bargraph.h"
 #include "usb/messages.h"
 
 /* ************************************************************************** */
@@ -75,6 +76,10 @@ static void system_init(void) {
     device_information_init();
 }
 
+extern void sh_eeprom(int argc, char **argv);
+extern void sh_flash(int argc, char **argv);
+extern void sh_romedit(int argc, char **argv);
+
 static void OS_init(void) {
     uart_config_t config = UART_get_config(2);
     config.baud = _1000000;
@@ -84,6 +89,10 @@ static void OS_init(void) {
     serial_port_init(&config);
 
     shell_init();
+
+    shell_register_command(sh_eeprom, "eeprom");
+    shell_register_command(sh_flash, "flash");
+    shell_register_command(sh_romedit, "romedit");
 
     buttons_init(NUMBER_OF_BUTTONS, buttonFunctions);
     button_isr_init();
