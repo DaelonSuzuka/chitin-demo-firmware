@@ -13,3 +13,8 @@ TOOLCHAIN_DIR = toolchain
 
 # include the toolchain makefile
 include $(TOOLCHAIN_DIR)/easy_xc8.mk
+
+# **************************************************************************** #
+
+image:
+	docker build ./.devcontainer -t chitindemofirmware:latest

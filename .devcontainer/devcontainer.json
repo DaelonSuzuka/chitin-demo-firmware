@@ -1,0 +1,50 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/docker-existing-dockerfile
+{
+    "name": "Existing Dockerfile",
+    "build": {
+        "context": "..",
+        "dockerfile": "Dockerfile"
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "aaron-bond.better-comments",
+                "christian-kohler.path-intellisense",
+                "chunsen.bracket-select",
+                "dbankier.vscode-quick-select",
+                "heaths.vscode-guid",
+                "jeff-hykin.better-c-syntax",
+                "llvm-vs-code-extensions.vscode-clangd",
+                "ms-vscode.cpptools",
+                "nmsmith89.incrementor",
+                "samuelcolvin.jinjahtml",
+                "sleistner.vscode-fileutils",
+                "thegtproject.hoverhex",
+                "tomoki1207.selectline-statusbar",
+                "Tyriar.sort-lines",
+                "v4run.transpose",
+                "wmaurer.change-case",
+                "DaelonSuzuka.cog",
+                "volkerdobler.insertnums",
+                "yzhang.markdown-all-in-one",
+                "TakumiI.markdowntable",
+                "JayFiDev.tablegenerator",
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "ms-python.debugpy",
+                "praveencrony.total-lines"
+            ]
+        }
+    },
+    "runArgs": [
+        "--cap-add=SYS_PTRACE",
+        "--security-opt",
+        "seccomp=unconfined",
+        "--privileged",
+        "-v",
+        "/dev/bus/usb:/dev/bus/usb",
+        "--device=/dev/bus/usb",
+        "--device=/dev/ttyACM0"
+    ]
+}
