@@ -31,3 +31,6 @@ RUN USER=root ./*-installer.sh --nox11 -- --unattendedmodeui none --mode unatten
     && rm ./*-installer.sh
 
 ENV PATH $PATH:/opt/microchip/mplabx/mplab_ide/bin
+ENV PATH $PATH:/opt/microchip/mplabx/mplab_platform/mplab_ipe
+
+RUN sed -i 's/\. \.\./\. $mplabx_dir/g' /opt/microchip/mplabx/mplab_platform/mplab_ipe/ipecmd.sh
