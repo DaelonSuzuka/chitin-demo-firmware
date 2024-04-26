@@ -23,24 +23,24 @@ enum bargraph_modes bargraph_mode = bargraph_set;
 /* ************************************************************************** */
 
 static void bargraph_spi_bitbang_tx_word(uint16_t word) {
-    set_BARGRAPH_STROBE(1);
-    set_BARGRAPH_CLOCK(0);
+    set_BARGRAPH_STROBE_PIN(1);
+    set_BARGRAPH_CLOCK_PIN(0);
 
     for (uint8_t i = 0; i < 16; i++) {
         if (word & (1 << (15 - i))) {
-            set_BARGRAPH_DATA(1);
+            set_BARGRAPH_DATA_PIN(1);
         } else {
-            set_BARGRAPH_DATA(0);
+            set_BARGRAPH_DATA_PIN(0);
         }
         delay_us(10);
-        set_BARGRAPH_CLOCK(1);
+        set_BARGRAPH_CLOCK_PIN(1);
         delay_us(10);
-        set_BARGRAPH_CLOCK(0);
+        set_BARGRAPH_CLOCK_PIN(0);
         delay_us(10);
     }
-    set_BARGRAPH_STROBE(0);
+    set_BARGRAPH_STROBE_PIN(0);
     delay_us(10);
-    set_BARGRAPH_STROBE(1);
+    set_BARGRAPH_STROBE_PIN(1);
     delay_us(10);
 }
 
@@ -50,9 +50,9 @@ void sh_bar(int argc, char **argv);
 void bargraph_init(void) {
     log_register();
 
-    set_BARGRAPH_CLOCK(1);
-    set_BARGRAPH_DATA(1);
-    set_BARGRAPH_STROBE(1);
+    set_BARGRAPH_CLOCK_PIN(1);
+    set_BARGRAPH_DATA_PIN(1);
+    set_BARGRAPH_STROBE_PIN(1);
 
     bargraph_spi_bitbang_tx_word(0xFFFF);
 

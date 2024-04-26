@@ -31,22 +31,20 @@ common = {
     'A7': ('RED_LED_PIN', Pin.led),
 
     # port B
-    'B0': None,
-    'B1': None,
+    'B0': ('KNOB_ONE_PIN', Pin.analog_in),
+    'B1': ('KNOB_TWO_PIN', Pin.analog_in),
     'B2': None,
     'B3': None,
     'B4': None,
     'B5': None,
-    'B6': ('DEBUG_RX_PIN', Pin.uart_rx),
-    'B7': ('DEBUG_TX_PIN', Pin.uart_tx),
 
     # port C
     'C0': None,
     'C1': None,
     'C2': None,
-    'C3': ('BARGRAPH_CLOCK', Pin.led),
-    'C4': ('BARGRAPH_MISO', Pin.led),
-    'C5': ('BARGRAPH_DATA', Pin.led),
+    'C3': ('BARGRAPH_CLOCK_PIN', Pin.led),
+    'C4': ('BARGRAPH_MISO_PIN', Pin.led),
+    'C5': ('BARGRAPH_DATA_PIN', Pin.led),
     'C6': None,
     'C7': None,
 
@@ -61,7 +59,7 @@ common = {
     'D7': ('RGB_3_LED_PIN', Pin.led),
 
     # port E
-    'E0': ('BARGRAPH_STROBE', Pin.led),
+    'E0': ('BARGRAPH_STROBE_PIN', Pin.led),
     'E1': None,
     'E2': None,
     'E3': None,
@@ -78,7 +76,10 @@ common = {
 }
 
 
-development = {}
+development = {
+    'B6': ('DEBUG_RX_PIN', Pin.uart_rx),
+    'B7': ('DEBUG_TX_PIN', Pin.uart_tx),
+}
 
 
 release = {}
